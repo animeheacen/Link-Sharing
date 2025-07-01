@@ -1,0 +1,24 @@
+version: 1
+
+services:
+  - type: web
+    name: link-sharing-bot
+    env: docker
+    plan: starter
+    buildCommand: "docker build -t link-sharing-bot ."
+    startCommand: "docker run -d --name link-sharing-bot -e TG_BOT_TOKEN=$TG_BOT_TOKEN -e APP_ID=$APP_ID -e API_HASH=$API_HASH -e OWNER_ID=$OWNER_ID -e DATABASE_URL=$DATABASE_URL -e DATABASE_NAME=$DATABASE_NAME -e ADMINS=$ADMINS link-sharing-bot"
+    envVars:
+      - key: TG_BOT_TOKEN
+        value: "your_bot_token_here"  # Replace with your actual bot token
+      - key: APP_ID
+        value: "your_app_id_here"      # Replace with your actual App ID
+      - key: API_HASH
+        value: "your_api_hash_here"     # Replace with your actual API Hash
+      - key: OWNER_ID
+        value: "your_owner_id_here"     # Replace with your actual owner ID
+      - key: DATABASE_URL
+        value: "your_mongodb_uri_here"  # Replace with your actual MongoDB URI
+      - key: DATABASE_NAME
+        value: "linkssharing"           # Database name
+      - key: ADMINS
+        value: "your_admin_ids_here"    # Space-separated admin IDs
